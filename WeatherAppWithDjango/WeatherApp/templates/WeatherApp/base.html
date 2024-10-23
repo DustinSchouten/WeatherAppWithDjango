@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <link rel="stylesheet" type="text/css" href="{% static css_file %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'WeatherApp/css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Weather app</title>
+  </head>
+  <body>
+    <h1>Weather app</h1>
+      {% block content %}
+      {% endblock %}
+  </body>
+</html>

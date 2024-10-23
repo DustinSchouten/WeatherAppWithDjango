@@ -1,0 +1,64 @@
+.weather_object {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.remove_icon_button {
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
+
+.remove_icon {
+    font-size: 1.75em !important;
+}
+
+.remove_icon:hover {
+    color: #d00;
+}
+
+.location_data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.country_flag {
+    width: 45px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+}
+
+.city_country_text {
+    font-size: 1.5em;
+}
+
+.datetime_api_collected, .datetime_created {
+    color: grey;
+}
+
+.datetime_created {
+    margin-top: 5px;
+}
+
+.temperature {
+    font-size: 7.5em;
+    margin: -20px;
+    font-weight: bold;
+    color: deepskyblue;
+}
+
+.empty_message {
+    text-align: center;
+    color: white;
+    font-size: 1.2em;
+}

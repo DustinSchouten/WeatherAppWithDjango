@@ -1,0 +1,18 @@
+{% extends "WeatherApp/base.html" %}
+
+{% block content %}
+<a class="back_button" href="/">Terug</a>
+
+<h2>Voer stad in:</h2>
+
+<form method="post" href="/results">
+    {% csrf_token %}
+    <input type="text" id="city" name="city" />
+    <input type="submit" id="submit_button" value="Verzend naar DB" />
+</form>
+
+{% if is_error %}
+<p class="error_message">Voer een geldige stad in</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "WeatherApp/base.html" %}
+
+{% block content %}
+    <a class="back_button" href="/">Terug</a>
+
+    {% if data.count > 0 %}
+        <h2>Results</h2>
+        <!-- For every available datarow, add a new div called weather_object -->
+        {% for object in data %}
+            <div class="weather_object">
+                <!-- Invisible form with button so that the user can perform a delete action on the database -->
+                <form class="invisible" id="weather_form_{{ object.id }}" method="post" href="/results">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ object.id }}" />
+                </form>
+                <button class="remove_icon_button" onclick="document.querySelector('#weather_form_{{ object.id }}').submit();">
+                    <i class="remove_icon fa fa-trash-o"></i>
+                </button>
+
+                <!-- Actual data displayed -->
+                <div class="location_data">
+                    {% if object.country_code %}
+                        <img class="country_flag" src="https://flagicons.lipis.dev/flags/4x3/{{ object.country_code }}.svg" />
+                        <p class="city_country_text">{{ object.city_name }} ({{ object.country_name }})</p>
+                    {% else %}
+                        <p class="city_country_text">{{ object.city_name }}</p>
+                    {% endif %}
+                </div>
+                <p class="datetime_api_collected">Datum-tijd opgehaald van API: {{ object.api_weather_datetime|date:"d-m-Y H:i:s" }}</p>
+                <p class="datetime_created">Datum-tijd aangemaakt: {{ object.datetime_created|date:"d-m-Y H:i:s" }}</p>
+                <p class="temperature">{{ object.temperature }}°</p>
+            </div>
+        {% endfor %}
+
+    <!-- If there are no results-->
+    {% else %}
+        <p class="empty_message">Er zijn geen results gevonden doordat de achterliggende database leeg is.</p>
+    {% endif %}
+
+{% endblock %}
